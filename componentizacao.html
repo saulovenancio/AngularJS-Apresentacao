@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <script src="angular.min.js"></script>
+        <script>
+            angular.module('myApp', []).directive('minhaDiretiva', function() {
+                return {
+                    template: '<div>{{valorViaAtributo}} {{valorDoEscopo}}</div>',
+                    restrict: 'A',
+                    link: function(scope, element, attrs) {
+                        element.bind('mouseenter', function() {
+                            element.css('background', '#FFCC29');
+                        });
+                        element.bind('mouseleave', function() {
+                            element.css('background', '#00A859');
+                        })
+                    },
+                    scope: {
+                      valorViaAtributo: '@valorViaAtributo',
+                      valorDoEscopo: '=valorDoEscopo'
+                    }
+                }
+            })
+        </script>
+    </head>
+    <body ng-app="myApp" ng-init="valor = 'Valor no Escopo'" >
+        <div minha-diretiva valor-via-atributo="Valor Via Atributo" valor-do-escopo="valor" ></div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script src="angular.min.js"></script>
+		<link href="bootstrap.css" rel="stylesheet">
+
+		<script>
+			// código aqui
+			function RoteirosController($scope) {
+				$scope.rotas = [ 
+				{ localSaida: "londrina", localChegada: "floripa",
+				    horaSaida: "10:00",
+				    horaChegada: "18:00"}
+				    ];
+
+				$scope.salvarRota = function(rota) {
+					$scope.rotas.push(rota);
+				}
+			}
+		</script>
+	</head>
+	<body ng-app>
+		<div ng-controller="RoteirosController">	
+			<h1> Criação de Rotas </h1>
+			<form ng-submit="salvarRota(rota)">
+				Local de saida: <input type="text" ng-model="rota.localSaida"/><br>
+				Local de chegada: <input type="text" ng-model="rota.localChegada"/><br>
+				Hora de saída:<input type="text" ng-model="rota.horaSaida"/><br>
+				Hora de chegada: <input type="text" ng-model="rota.horaChegada"/><br>
+				<input type="submit" value="Salvar" >
+			</form>
+			Pesquise por localSaida: <input type="text" ng-model="search.localSaida"><br>
+
+			<table class="table table-striped">
+				<tr>
+					<td>Saída</td>
+					<td>Destino</td>
+					<td>Hora saída</td>
+					<td>Hora chegada</td>
+				</tr>
+				<tr ng-repeat="rota in rotas | filter:search">
+					<td> {{rota.localSaida}}</td>
+					<td>{{rota.localChegada}}</td>
+					<td>{{rota.horaSaida}}</td>
+					<td>{{rota.horaChegada}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>
