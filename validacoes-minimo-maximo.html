@@ -1,0 +1,29 @@
+<html ng-app>
+    <head>
+        <script src="angular.js"></script>
+        <link href="bootstrap.css" rel="stylesheet">
+    </head>
+    <style>
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h3>Dados do Passageiro:</h3>
+            <form name="formulario">
+                Nome:
+                <input type="text" name="nome" ng-model="nome"  ng-minlength="2"
+                       ng-maxlength="5" />
+                <span class="error" ng-show="formulario.nome.$error.minlength">
+                    <p>Seu nome deve conter minimo 2 caracteres</p>
+                </span>
+                <span class="error" ng-show="formulario.nome.$error.maxlength">
+                    <p>Seu nome deve conter maximo 5 caracteres</p>
+                </span>
+            </form>
+        </div>
+    </body>
+
+</html>

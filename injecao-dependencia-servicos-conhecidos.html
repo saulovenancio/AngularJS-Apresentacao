@@ -1,0 +1,22 @@
+<html >
+<head>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet">
+    <script>
+        var meuApp = angular.module('meuApp', []);
+        meuApp.factory('alert', function ($window) {
+            return function (text) {
+                $window.alert(text);
+            }
+        });
+        meuApp.controller('IDCtrl', function ($scope, alert) {
+            $scope.clicar = function() {
+                alert('Meu alerta chamado pelo serviço!');
+            }
+        });
+    </script>
+</head>
+<body ng-app="meuApp" ng-controller="IDCtrl">
+    <button ng-click="clicar()">Acionar serviço!</button>
+</body>
+</html>

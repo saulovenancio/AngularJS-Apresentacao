@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet">
+    <script>
+        var meuApp = angular.module("meuApp", []);
+        meuApp.directive("corVermelha", function () {
+            return  {
+                restrict: 'E',
+                template: '<p style="color:red">{{texto}}</p>',
+                scope: {
+                    texto: '@texto'
+                }
+            }
+        });
+    </script>
+</head>
+    <body ng-app="meuApp">
+        <cor-vermelha texto="Meu texto que vai ficar vermelho!!!!"/>
+    </body>
+</html>

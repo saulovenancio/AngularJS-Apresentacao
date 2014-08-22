@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script src="angular.js"></script>
+        <link href="bootstrap.css" rel="stylesheet">
+		<script>
+			function PassageirosController($scope) {
+                // Modelo: advindo de BD, REST, etc
+                var dadosPassageiros = [
+                    { nome: "Saulo" },
+                    { nome: "Marcos" }
+                ];
+
+                // Exposição dos meus modelos para a visão
+				$scope.passageiros = dadosPassageiros;
+
+                // Funcionalidade da tela/visão
+				$scope.salvaPassageiro = function(passageiro) {
+					$scope.passageiros.push(passageiro);
+                    $scope.passageiro = {};
+                    // IMPORTANTE: Não salva no banco, apenas visão
+				};
+			}
+		</script>
+	</head>
+	<body ng-app>
+		<div class="container" ng-controller="PassageirosController">
+			<h2>Cadastro de Passageiro</h2>
+		
+			<form ng-submit="salvaPassageiro(passageiro)">
+				Nome: <input type="text" name="nome" ng-model="passageiro.nome"/>
+				<input type="submit" value="Salvar">
+			</form>
+
+            <h2>Passageiros</h2>
+			<table class="table">
+				<tr ng-repeat="passageiro in passageiros">
+					<td> {{passageiro.nome}}</td>
+				</tr>
+			</table>
+			
+
+		</div>
+
+		
+
+	</body>
+
+</html>
