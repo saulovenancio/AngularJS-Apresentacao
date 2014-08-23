@@ -23,14 +23,6 @@
                 }
             });
 
-
-            meuApp.value('tiposUsuarios', [ 'admin', 'user']);
-
-            meuApp.controller('ExemploCtrl', function ($scope, nomeApp, tiposUsuarios) {
-                $scope.nomeAplicativo = nomeApp;
-                $scope.primeiroTipoUsuario = tiposUsuarios[0];
-            });
-
 		</script>
 	</head>
 	<body ng-app="meuApp">
