@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script src="angular.js"></script>
+        <link href="bootstrap.css" rel="stylesheet">
+		<script>
+
+            var meuApp = angular.module('meuApp', []);
+
+            meuApp.service('meuServico', function() {
+                this.dadoInterno = 'dado';
+                this.funcaoInterna = function() {
+                    // sempre essa mesma função e seus dados serão utilizados
+                }
+            });
+
+            meuApp.factory('minhaFabrica', function() {
+                // cada chamada fabricará um novo objeto
+                return {
+                    dadoInterno: 'dado',
+                    funcaoInterna: function() {
+                        //faz algo
+                    }
+                }
+            });
+
+
+            meuApp.value('tiposUsuarios', [ 'admin', 'user']);
+
+            meuApp.controller('ExemploCtrl', function ($scope, nomeApp, tiposUsuarios) {
+                $scope.nomeAplicativo = nomeApp;
+                $scope.primeiroTipoUsuario = tiposUsuarios[0];
+            });
+
+		</script>
+	</head>
+	<body ng-app="meuApp">
+		<div class="container" ng-controller="ExemploCtrl">
+			<h2>{{nomeAplicativo}}</h2>
+			<p>
+                Tipo de Usuário 0: {{primeiroTipoUsuario}}
+			</p>
+		</div>
+	</body>
+
+</html>

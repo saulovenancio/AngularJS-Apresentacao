@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="angular.js"></script>
+        <link href="bootstrap.css" rel="stylesheet">
+		<script>
+
+            var meuApp = angular.module('meuApp', []);
+
+            meuApp.constant('nomeApp', 'Meu App');
+
+            meuApp.value('tiposUsuarios', [ 'admin', 'user']);
+
+            meuApp.controller('ExemploCtrl', function ($scope, nomeApp, tiposUsuarios) {
+                $scope.nomeAplicativo = nomeApp;
+                $scope.primeiroTipoUsuario = tiposUsuarios[0];
+            });
+
+		</script>
+	</head>
+	<body ng-app="meuApp">
+		<div class="container" ng-controller="ExemploCtrl">
+			<h2>{{nomeAplicativo}}</h2>
+			<p>
+                Tipo de Usuário 0: {{primeiroTipoUsuario}}
+			</p>
+		</div>
+	</body>
+
+</html>
